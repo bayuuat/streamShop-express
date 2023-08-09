@@ -6,16 +6,16 @@ var logger = require('morgan');
 var app = express();
 
 // import router
-const videosRouter = require('./app/api/v1/videos/router');
-const productsRouter = require('./app/api/v1/products/router');
-const commentsRouter = require('./app/api/v1/comments/router');
+const videosRouter = require('./app/api/videos/router');
+const productsRouter = require('./app/api/products/router');
+const commentsRouter = require('./app/api/comments/router');
 
 // middlewares
 const notFoundMiddleware = require('./app/middlewares/not-found');
 const handleErrorMiddleware = require('./app/middlewares/handler-error');
 
 // membuat variabel v1
-const v1 = '/api/v1';
+const v1 = '/api';
 
 app.use(logger('dev'));
 app.use(express.json());

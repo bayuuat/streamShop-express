@@ -1,11 +1,10 @@
-// import model category
-const { StatusCodes } = require('http-status-codes');
-const { getAllVideos, createVideos, getOneVideos, updateVideos, deleteVideos } = require('../../../services/mongoose/videos');
+const { getAllProducts, getOneProducts, updateProducts, createProducts, deleteProducts } = require('../../services/products');
 
-// buat function create
+const { StatusCodes } = require('http-status-codes');
+
 const create = async (req, res, next) => {
 	try {
-		const result = await createVideos(req);
+		const result = await createProducts(req);
 
 		res.status(StatusCodes.CREATED).json({
 			data: result,
@@ -17,11 +16,10 @@ const create = async (req, res, next) => {
 
 const index = async (req, res, next) => {
 	try {
-		const result = await getAllVideos();
+		const result = await getAllProducts(req);
 
 		res.status(StatusCodes.OK).json({
 			data: result,
-			message: 'Success get videos data'
 		});
 	} catch (err) {
 		next(err);
@@ -30,11 +28,10 @@ const index = async (req, res, next) => {
 
 const find = async (req, res, next) => {
 	try {
-		const result = await getOneVideos(req);
+		const result = await getOneProducts(req);
 
-		res.status(StatusCode.OK).json({
+		res.status(StatusCodes.OK).json({
 			data: result,
-			message: 'Success finding videos data'
 		});
 	} catch (err) {
 		next(err);
@@ -43,11 +40,10 @@ const find = async (req, res, next) => {
 
 const update = async (req, res, next) => {
 	try {
-		const result = await updateVideos(req);
+		const result = await updateProducts(req);
 
-		res.status(StatusCode.OK).json({
+		res.status(StatusCodes.OK).json({
 			data: result,
-			message: 'Success update videos data'
 		});
 	} catch (err) {
 		next(err);
@@ -56,11 +52,10 @@ const update = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
 	try {
-		const result = await deleteVideos(req);
+		const result = await deleteProducts(req);
 
-		res.status(StatusCode.OK).json({
+		res.status(StatusCodes.OK).json({
 			data: result,
-			message: 'Success delete videos data'
 		});
 	} catch (err) {
 		next(err);
@@ -68,9 +63,9 @@ const destroy = async (req, res, next) => {
 };
 
 module.exports = {
-	find,
 	index,
-	create,
+	find,
 	update,
 	destroy,
+	create,
 };

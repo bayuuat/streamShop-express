@@ -1,8 +1,8 @@
 // import model Products
-const Products = require('../../api/v1/products/model');
+const Products = require('../api/products/model');
 const { checkingVideos } = require('./videos');
 
-const { BadRequestError, NotFoundError } = require('../../errors');
+const { BadRequestError, NotFoundError } = require('../errors');
 
 const getAllProducts = async (req) => {
 	const { videoId } = req.query;
@@ -26,7 +26,8 @@ const getAllProducts = async (req) => {
 const createProducts = async (req) => {
 	const { link, title, price, video } = req.body;
 
-	await checkingVideos(video);
+	const check = await checkingVideos(video);
+	console.log(check);
 
 	const result = await Products.create({ link, price, title, video });
 

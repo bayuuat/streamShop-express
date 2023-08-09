@@ -1,8 +1,8 @@
-const Comments = require('../../api/v1/comments/model');
+const Comments = require('../api/comments/model');
 const { checkingVideos } = require('./videos');
 
 // import custom error not found dan bad request
-const { NotFoundError, BadRequestError } = require('../../errors');
+const { NotFoundError, BadRequestError } = require('../errors');
 
 const getAllComments = async (req) => {
 	const { videoId } = req.query;

@@ -1,8 +1,8 @@
 // import model videos
-const Videos = require('../../api/v1/videos/model');
+const Videos = require('../api/videos/model');
 
 // import custom error not found dan bad request
-const { NotFoundError, BadRequestError } = require('../../errors');
+const { NotFoundError, BadRequestError } = require('../errors');
 
 const getAllVideos = async () => {
 	const result = await Videos.find();

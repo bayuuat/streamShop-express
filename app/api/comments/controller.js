@@ -1,4 +1,4 @@
-const { getAllComments, getOneComments, updateComments, createComments, deleteComments } = require('../../../services/mongoose/comments');
+const { getAllComments, getOneComments, updateComments, createComments, deleteComments } = require('../../services/comments');
 
 const { StatusCodes } = require('http-status-codes');
 

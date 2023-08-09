@@ -1,10 +1,11 @@
-const { getAllProducts, getOneProducts, updateProducts, createProducts, deleteProducts } = require('../../../services/mongoose/products');
-
+// import model category
 const { StatusCodes } = require('http-status-codes');
+const { getAllVideos, createVideos, getOneVideos, updateVideos, deleteVideos } = require('../../services/videos');
 
+// buat function create
 const create = async (req, res, next) => {
 	try {
-		const result = await createProducts(req);
+		const result = await createVideos(req);
 
 		res.status(StatusCodes.CREATED).json({
 			data: result,
@@ -16,10 +17,11 @@ const create = async (req, res, next) => {
 
 const index = async (req, res, next) => {
 	try {
-		const result = await getAllProducts(req);
+		const result = await getAllVideos();
 
 		res.status(StatusCodes.OK).json({
 			data: result,
+			message: 'Success get videos data'
 		});
 	} catch (err) {
 		next(err);
@@ -28,10 +30,11 @@ const index = async (req, res, next) => {
 
 const find = async (req, res, next) => {
 	try {
-		const result = await getOneProducts(req);
+		const result = await getOneVideos(req);
 
-		res.status(StatusCodes.OK).json({
+		res.status(StatusCode.OK).json({
 			data: result,
+			message: 'Success finding videos data'
 		});
 	} catch (err) {
 		next(err);
@@ -40,10 +43,11 @@ const find = async (req, res, next) => {
 
 const update = async (req, res, next) => {
 	try {
-		const result = await updateProducts(req);
+		const result = await updateVideos(req);
 
-		res.status(StatusCodes.OK).json({
+		res.status(StatusCode.OK).json({
 			data: result,
+			message: 'Success update videos data'
 		});
 	} catch (err) {
 		next(err);
@@ -52,10 +56,11 @@ const update = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
 	try {
-		const result = await deleteProducts(req);
+		const result = await deleteVideos(req);
 
-		res.status(StatusCodes.OK).json({
+		res.status(StatusCode.OK).json({
 			data: result,
+			message: 'Success delete videos data'
 		});
 	} catch (err) {
 		next(err);
@@ -63,9 +68,9 @@ const destroy = async (req, res, next) => {
 };
 
 module.exports = {
-	index,
 	find,
+	index,
+	create,
 	update,
 	destroy,
-	create,
 };
