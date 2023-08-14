@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('stream-shop:server');
 var http = require('http');
 const db = require('../app/db');
+const initializeSocket = require('../app/services/socket');
 
 /**
  * Get port from environment and store in Express.
@@ -36,6 +37,7 @@ db.on('error', function (err) {
  *  aplikasi berhasil terhubung dengan MongoDB,
  */
 db.on('open', function () {
+	initializeSocket(server);
 	server.listen(port);
 	server.on('error', onError);
 	server.on('listening', onListening);

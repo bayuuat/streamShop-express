@@ -15,6 +15,10 @@ let productSchema = Schema(
 			type: Number,
 			required: [true, 'Harga Product harus diisi'],
 		},
+		img: {
+			type: String,
+			required: [true, 'Image Product harus diisi'],
+		},
 		video: {
 			type: mongoose.Types.ObjectId,
 			ref: 'Video',

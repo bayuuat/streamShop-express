@@ -4,8 +4,16 @@ const Videos = require('../api/videos/model');
 // import custom error not found dan bad request
 const { NotFoundError, BadRequestError } = require('../errors');
 
-const getAllVideos = async () => {
-	const result = await Videos.find();
+const getAllVideos = async (req) => {
+	const { name } = req.query;
+	let condition = {};
+
+	if (!!name) {
+		const regex = new RegExp(name, 'i');
+		condition = { ...condition, name: regex };
+	}
+
+	const result = await Videos.find(condition);
 
 	return result;
 };

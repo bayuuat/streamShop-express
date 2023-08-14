@@ -17,7 +17,7 @@ const create = async (req, res, next) => {
 
 const index = async (req, res, next) => {
 	try {
-		const result = await getAllVideos();
+		const result = await getAllVideos(req);
 
 		res.status(StatusCodes.OK).json({
 			data: result,
@@ -32,7 +32,7 @@ const find = async (req, res, next) => {
 	try {
 		const result = await getOneVideos(req);
 
-		res.status(StatusCode.OK).json({
+		res.status(StatusCodes.OK).json({
 			data: result,
 			message: 'Success finding videos data'
 		});
@@ -45,7 +45,7 @@ const update = async (req, res, next) => {
 	try {
 		const result = await updateVideos(req);
 
-		res.status(StatusCode.OK).json({
+		res.status(StatusCodes.OK).json({
 			data: result,
 			message: 'Success update videos data'
 		});
@@ -58,7 +58,7 @@ const destroy = async (req, res, next) => {
 	try {
 		const result = await deleteVideos(req);
 
-		res.status(StatusCode.OK).json({
+		res.status(StatusCodes.OK).json({
 			data: result,
 			message: 'Success delete videos data'
 		});

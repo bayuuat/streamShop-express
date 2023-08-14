@@ -11,6 +11,10 @@ let videoSchema = Schema(
 			type: String,
 			required: [true, 'Harus memiliki thumbnail'],
 		},
+		videoLink: {
+			type: String,
+			required: [true, 'Harus memiliki link vide'],
+		},
 	},
 	{ timestamps: true }
 );

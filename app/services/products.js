@@ -14,11 +14,7 @@ const getAllProducts = async (req) => {
 	}
 
 	const result = await Products.find(condition)
-		.populate({
-			path: 'video',
-			select: '_id name',
-		})
-		.select('_id link title video');
+		.select('_id link title price img');
 
 	return result;
 };
