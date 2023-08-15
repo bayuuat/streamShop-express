@@ -4,7 +4,7 @@ const { createComments } = require('./comments');
 function initializeSocket(server) {
 	const io = socketIo(server, {
 		cors: {
-			origin: 'http://localhost:5173', // Replace with your React app's URL
+			origin: 'https://stream-shop.vercel.app', // Replace with your React app's URL
 			methods: ['GET', 'POST'],
 		},
 	});
